@@ -48,24 +48,24 @@ export class PopulationGraph {
     }
   }
 
-  shortestPath(start: PersonNode, target: PersonNode):number {
+  getRrelationLevel(start: PersonNode, target: PersonNode):number {
     const visited: Set<PersonNode> = new Set();
-    const queue: [PersonNode, PersonNode[]][] = [];
-  
-    queue.push([start, [start]]);
+    const queue: [PersonNode, number][] = [];
+
+    queue.push([start, 0]);
   
     while (queue.length > 0) {
-      const [currentNode, currentPath] = queue.shift()!;
+      const [currentNode, currentRelationLevel] = queue.shift()!;
   
       if (currentNode === target) {
-        return currentPath.length - 1;
+        return currentRelationLevel;
       }
   
       visited.add(currentNode);
   
       for (const neighbor of currentNode.adjacents) {
         if (!visited.has(neighbor)) {
-          queue.push([neighbor, [...currentPath, neighbor]]);
+          queue.push([neighbor, currentRelationLevel+1]);
         }
       }
     }

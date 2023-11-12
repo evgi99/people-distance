@@ -19,27 +19,27 @@ describe("test graph", () => {
   });
 
   test("path is -1 : not connected", () => {
-    const distance = allPeople.shortestPath(allPeople.peoples[0],allPeople.peoples[5]);
+    const distance = allPeople.getRrelationLevel(allPeople.peoples[0],allPeople.peoples[5]);
     expect(distance).toBe(-1);
   })
 
   test("path is 1 : connected directly", () => {
-    const distance = allPeople.shortestPath(allPeople.peoples[0],allPeople.peoples[1]);
+    const distance = allPeople.getRrelationLevel(allPeople.peoples[0],allPeople.peoples[1]);
     expect(distance).toBe(1);
   })
 
   test("path is 2 : connected directly", () => {
-    const distance = allPeople.shortestPath(allPeople.peoples[2],allPeople.peoples[1]);
+    const distance = allPeople.getRrelationLevel(allPeople.peoples[2],allPeople.peoples[1]);
     expect(distance).toBe(2);
   })
 
   test("path is 0 : same person", () => {
-    const distance = allPeople.shortestPath(allPeople.peoples[1],allPeople.peoples[1]);
+    const distance = allPeople.getRrelationLevel(allPeople.peoples[1],allPeople.peoples[1]);
     expect(distance).toBe(0);
   })
 
   test("path is 1 : second cluster", () => {
-    const distance = allPeople.shortestPath(allPeople.peoples[4],allPeople.peoples[5]);
+    const distance = allPeople.getRrelationLevel(allPeople.peoples[4],allPeople.peoples[5]);
     expect(distance).toBe(1);
   })
 
